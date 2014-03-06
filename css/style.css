@@ -2,6 +2,34 @@
 
 @font-face{font-family:'FontAwesome';src:url('font/fontawesome-webfont.eot?v=4.0.1');src:url('font/fontawesome-webfont.eot?#iefix&v=4.0.1') format('embedded-opentype'),url('font/fontawesome-webfont.woff?v=4.0.1') format('woff'),url('font/fontawesome-webfont.ttf?v=4.0.1') format('truetype'),url('font/fontawesome-webfont.svg?v=4.0.1#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
 
+/*font-family: 'Bad Script', cursive;
+font-family: 'Passero One', cursive;
+font-family: 'Arizonia', cursive;
+font-family: 'Akronim', cursive;
+
+*//*+1*/
+/*font-family: 'Modern Antiqua', cursive;
+font-family: 'Oregano', cursive;
+font-family: 'Expletus Sans', cursive;
+*/
+
+
+/*
+font-family: 'Glass Antiqua', cursive;
+font-family: 'Sevillana', cursive;
+font-family: 'Spirax', cursive;
+font-family: 'Cinzel Decorative', cursive;
+*/
+/*
+BASE COLORS:
+
+2A1300
+E1CD90
+B9A56A
+705818
+898265
+*/
+
 /*
 	Tessellate 1.0 by HTML5 UP
 	html5up.net | @n33co
@@ -12,14 +40,24 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
+  .hidden
+  {
+    display: none;
+  }
+
 	body
 	{
 		background: #F8F8F8;
+    /*max-width: 900px;*/
+    margin: 0 auto;
 	}
 
 	body,input,textarea,select
 	{
-		font-family: 'Roboto', sans-serif;
+		/*font-family: 'Roboto', sans-serif;*/
+    /*font-family: 'Vampiro One', cursive;*/
+    /*font-family: 'Sacramento', cursive;*/
+    font-family: 'Josefin Sans', sans-serif;
 		font-weight: 300;
 		font-size: 17pt;
 		line-height: 1.75em;
@@ -33,8 +71,11 @@
 		margin: 0 0 1em 0;
 		font-weight: 100;
 		line-height: 1.5em;
+    font-family: 'Spirax', cursive;
+    text-shadow: 0px 1px 0 #ddd;
+    text-transform: capitalize;
 	}
-	
+
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 		{
 			color: inherit;
@@ -50,19 +91,19 @@
 		{
 			color: #fff;
 		}
-		
+
 	strong, b
 	{
 		font-weight: 400;
 		color: inherit;
 	}
-	
+
 		.dark strong, .dark b
 		{
 			color: #fff;
 			color: rgba(255,255,255,0.85);
 		}
-	
+
 	em, i
 	{
 		font-style: italic;
@@ -79,7 +120,7 @@
 		-ms-transition: border-bottom-color 0.25s ease-in-out;
 		transition: border-bottom-color 0.25s ease-in-out;
 	}
-	
+
 		a:hover
 		{
 			border-bottom-color: rgba(0,0,0,0);
@@ -102,14 +143,14 @@
 		top: 0.5em;
 		font-size: 0.8em;
 	}
-	
+
 	sup
 	{
 		position: relative;
 		top: -0.5em;
 		font-size: 0.8em;
 	}
-	
+
 	hr
 	{
 		border: 0;
@@ -121,7 +162,7 @@
 		{
 			border-top-color: rgba(255,255,255,0.5);
 		}
-	
+
 	blockquote
 	{
 		border-left: solid 0.25em #e6e6e6;
@@ -133,12 +174,12 @@
 		{
 			border-left-color: rgba(255,255,255,0.5);
 		}
-	
+
 	p, ul, ol, dl, table
 	{
 		margin-bottom: 1em;
 	}
-	
+
 	p
 	{
 		text-align: justify;
@@ -148,7 +189,7 @@
 	{
 		margin-bottom: 1em;
 	}
-	
+
 		header h1,
 		header h2,
 		header h3,
@@ -158,14 +199,19 @@
 		{
 			margin: 0;
 		}
-	
+
 		header p
 		{
 			display: block;
 			margin: 0;
 			padding: 0.25em 0 0.5em 0;
 		}
-		
+
+    header div.super
+    {
+      margin-top: 140px;
+    }
+
 	footer
 	{
 		padding-top: 1.5em;
@@ -175,25 +221,25 @@
 	{
 		clear: both;
 	}
-	
+
 	.featured
 	{
 		text-align: center;
 	}
-	
+
 		.featured p
 		{
 			text-align: center;
 		}
 
 	/* Sections/Articles */
-	
+
 		section,
 		article
 		{
 			margin-bottom: 3em;
 		}
-		
+
 		section > :last-child,
 		article > :last-child
 		{
@@ -231,7 +277,7 @@
 				height: 100%;
 				background: url('images/overlay.png');
 			}
-		
+
 			.image img
 			{
 				display: block;
@@ -245,19 +291,19 @@
 				width: 100%;
 				margin: 0 0 2em 0;
 			}
-			
+
 			.image.full
 			{
 				display: block;
 				width: 100%;
 			}
-			
+
 			.image.left
 			{
 				float: left;
 				margin: 0 2em 2em 0;
 			}
-			
+
 			.image.centered
 			{
 				display: block;
@@ -277,23 +323,23 @@
 			list-style: disc;
 			padding-left: 1em;
 		}
-		
+
 			ul.default li
 			{
 				padding-left: 0.5em;
-			}		
+			}
 
 		ul.icons
 		{
 			cursor: default;
-		}	
-		
+		}
+
 			ul.icons li
 			{
 				display: inline-block;
 				padding-left: 0.75em;
 			}
-			
+
 				ul.icons a
 				{
 					display: inline-block;
@@ -321,7 +367,7 @@
 		{
 			cursor: default;
 		}
-		
+
 			ul.menu li
 			{
 				display: inline-block;
@@ -330,7 +376,7 @@
 				padding: 0 0 0 0.5em;
 				margin: 0 0 0 0.5em;
 			}
-			
+
 			ul.menu li:first-child
 			{
 				border-left: 0;
@@ -342,13 +388,13 @@
 		{
 			cursor: default;
 		}
-		
+
 			ul.actions li
 			{
 				display: inline-block;
 				margin: 0 0 0 0.5em;
 			}
-			
+
 			ul.actions li:first-child
 			{
 				margin-left: 0;
@@ -370,17 +416,17 @@
 		form
 		{
 		}
-		
+
 			form .actions
 			{
 				margin-bottom: 0;
 			}
-			
+
 			form label
 			{
 				display: block;
 			}
-		
+
 			form input.text,
 			form select,
 			form textarea
@@ -414,13 +460,13 @@
 				{
 					position: relative;
 				}
-				
+
 					form .select select
 					{
 						text-indent: 0.01px;
 						text-overflow: '';
    					}
-				
+
 					form .select:before
 					{
 						content: '';
@@ -458,17 +504,17 @@
 			{
 				min-height: 13em;
 			}
-			
+
 			form select
 			{
 				position: relative;
 			}
-			
+
 				form select option
 				{
 					color: #000;
 				}
-			
+
 			form ::-moz-focus-inner
 			{
 				border: 0;
@@ -500,7 +546,7 @@
 					background: rgba(255,255,255,0.1);
 					box-shadow: inset 0 0 0 1px #fff;
 				}
-			
+
 			.dark form select
 			{
 			}
@@ -510,14 +556,14 @@
 			.dark form :-moz-placeholder { color: rgba(255,255,255,0.85) !important; }
 			.dark form ::-moz-placeholder { color: rgba(255,255,255,0.85) !important; }
 			.dark form :-ms-input-placeholder { color: rgba(255,255,255,0.85) !important; }
-			
+
 	/* Tables */
-	
+
 		table
 		{
 			width: 100%;
 		}
-		
+
 			table.default
 			{
 				width: 100%;
@@ -532,23 +578,23 @@
 				{
 					border: solid 1px #e6e6e6;
 				}
-			
+
 				table.default tbody tr:nth-child(2n+2)
 				{
 					background: #f8f8f8;
 				}
-				
+
 				table.default td
 				{
 					padding: 0.5em 1em 0.5em 1em;
 				}
-				
+
 				table.default th
 				{
 					text-align: left;
 					padding: 0.5em 1em 1em 1em;
 				}
-			
+
 				table.default thead
 				{
 				}
@@ -556,12 +602,12 @@
 				table.default tfoot
 				{
 				}
-				
+
 					table.default tfoot td
 					{
 						padding-top: 1em;
 					}
-				
+
 				table.default tbody
 				{
 				}
@@ -573,19 +619,19 @@
 				.dark table.default tbody
 				{
 				}
-			
+
 					.dark table.default tbody tr
 					{
 						border-color: rgba(255,255,255,0.5);
 					}
-				
+
 					.dark table.default tbody tr:nth-child(2n+2)
 					{
 						background: rgba(255,255,255,0.1);
 					}
-	
+
 	/* Buttons */
-		
+
 		.button
 		{
 			-webkit-appearance: none;
@@ -610,14 +656,14 @@
 			{
 				background: #4f4f4f;
 			}
-			
+
 		.button.alt
 		{
 			color: inherit;
 			box-shadow: inset 0 0 0 1px #e6e6e6;
 			background: none;
 		}
-		
+
 			.button.alt:hover
 			{
 				background: rgba(0,0,0,0.025);
@@ -629,7 +675,7 @@
 				box-shadow: inset 0 0 0 1px #fff;
 				color: #fff;
 			}
-			
+
 				.dark .button:hover
 				{
 					background: rgba(255,255,255,0.25);
@@ -657,7 +703,7 @@
 			margin-bottom: 2.75em;
 			cursor: default;
 		}
-		
+
 			.feature-icon .fa
 			{
 				display: inline-block;
@@ -669,7 +715,7 @@
 				color: #666;
 				line-height: 2.1em;
 			}
-		
+
 			.feature-icon:before
 			{
 				content: '';
@@ -706,7 +752,7 @@
 					box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
 					color: #fff;
 				}
-			
+
 				.dark .feature-icon:before
 				{
 					background: rgba(255,255,255,0.5);
@@ -724,7 +770,7 @@
 			color: #aaa;
 			color: rgba(255,255,255,0.65);
 		}
-			
+
 /*********************************************************************************/
 /* Icons                                                                         */
 /* Powered by Font Awesome by Dave Gandy | http://fontawesome.io                 */
@@ -739,12 +785,12 @@
 		.fa.solo
 		{
 		}
-		
+
 			.fa.solo span
 			{
 				display: none;
 			}
-			
+
 		.fa:before
 		{
 			display:inline-block;
@@ -1161,14 +1207,17 @@
 	{
 		position: relative;
 		margin: 0;
-		background: url('../images/header.jpg');
+		/*background: url('../images/header.jpg');*/
 		background-size: cover;
 		background-position: center center;
-		padding: 14em 0 14em 0;
-		text-align: center;
+    /*padding: 14em 0 14em 0;*/
+		/*padding: 26em 0 2em 0;*/
+		min-height: 30em;
+    text-align: center;
 		color: #fff;
+    position: relative;
 	}
-	
+
 		#header:after
 		{
 			content: '';
@@ -1177,9 +1226,9 @@
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background: url('images/overlay.png');
+			/*background: url('images/overlay.png');*/
 		}
-	
+
 		#header > header,
 		#header > header p,
 		#header > footer
@@ -1188,32 +1237,42 @@
 			position: relative;
 			z-index: 1;
 		}
-		
+
 		#header header
 		{
-		}
-		
-			#header header h1
-			{
-				font-size: 2.25em;
-				line-height: 1.25em;
-				margin-bottom: 0;
-			}
-			
-			#header header p
-			{
-				margin-top: 1.25em;
-				font-weight: 100;
-				padding: 0;
-				font-size: 1.25em;
-				line-height: 1.5em;
-			}
-			
+      position: absolute;
+      bottom: 0;
+      margin: 20px auto;
+      left: 25%;
+      width: 50%;
+      background-color: rgba(0,0,0,.5);
+      padding: 1em 0;
+    }
+
+      #header header h1
+      {
+        font-size: 4em;
+        line-height: 1.25em;
+        margin-bottom: 0;
+        font-family: 'Sacramento', cursive;
+        text-decoration: none;
+        text-shadow: none;
+      }
+
+      #header header p
+      {
+        margin: 10px 0 1.25em 0;
+        font-weight: 100;
+        padding: 0;
+        font-size: 1.5em;
+        line-height: 1.5em;
+      }
+
 		#header footer
 		{
 			padding-top: 1.5em;
 		}
-	
+
 /*********************************************************************************/
 /* Main Sections                                                                 */
 /*********************************************************************************/
@@ -1223,27 +1282,28 @@
 		position: relative;
 		margin: 0;
 	}
-	
+
 		.main > header
 		{
 			background: #fff;
 			text-align: center;
-			padding: 5em 0 5em 0;
+			padding: 2em 0 5em 0;
 			margin: 0;
 		}
-		
+
 			.main > header h2
 			{
 				font-size: 2.25em;
 				font-weight: 100;
-				margin-bottom: 0;
+				margin-bottom: 20px;
 			}
-		
+
 			.main > header p
 			{
-				margin: 2em 0 0 0;
+				margin: 2em 0;
 				padding: 0;
 				text-align: center;
+        font-size: 1.4em;
 			}
 
 		.main > .content
@@ -1251,9 +1311,9 @@
 			padding: 6em 0 6em 0;
 		}
 
-			.main > .content > .container
-			{
-			}
+      .main > .content > .container
+      {
+      }
 
 			.main > .content h3
 			{
@@ -1264,7 +1324,7 @@
 			{
 				background: #433;
 			}
-			
+
 			.main > .content.style1
 			{
 				background:	url('images/bgtr.svg') top right no-repeat,
@@ -1296,10 +1356,43 @@
 				background: #fff;
 			}
 
+      .main .container p.quote
+      {
+        font-size: 2em;
+      }
+
+/* out of framework */
+
+      .main
+      {
+        background-image: url('../images/green_cup.png');
+        color: #000;
+      }
+
+      .main > header
+      {
+        background: none;
+      }
+
+      .main > header h2
+      {
+        color: #5B2E11;
+      }
+
+      #process.main .container img
+      {
+        margin: 10px 0;
+        max-height: 203px;
+      }
+
+      section#header a {
+        text-decoration: none;
+        border: none;
+      }
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
-	
+
 	#footer
 	{
 		position: relative;
@@ -1308,27 +1401,27 @@
 		padding: 4em 0 8em 0;
 		box-shadow: inset 0 1px 0 0 #e6e6e6;
 	}
-	
+
 		#footer .copyright
 		{
 			margin-top: 3em;
 			font-size: 0.8em;
 			color: #aaa;
 		}
-		
+
 			#footer .copyright a
 			{
 				color: inherit;
 			}
-			
+
 		#footer ul.icons
 		{
-		}	
-		
+		}
+
 			#footer ul.icons li
 			{
 			}
-			
+
 				#footer ul.icons a
 				{
 					box-shadow: inset 0 0 0 1px #d6d6d6;
