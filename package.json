@@ -8,6 +8,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-less": "*",
     "grunt-contrib-watch": "*",
-    "grunt-devserver": "*"
+    "grunt-devserver": "*",
+    "bower": "*"
   }
 }
