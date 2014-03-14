@@ -1,0 +1,40 @@
+#media-query-notify {
+  font-size: 2.6em;
+  float: right;
+  color: #b9b9b9;
+  width: 100%;
+  text-align: center;
+}
+
+#media-query-notify span {
+  border: 1px dashed #b9b9b9;
+  margin: 2px auto;
+  display: inline-block;
+  background-color: #999;
+  color: #000;
+}
+
+/* Large desktop */
+@media(min-width:1200px){
+  #media-query-notify span {
+    background-color: #000000;
+    color: #fff;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media(min-width:768px)and(max-width:979px){
+  #media-query-notify span {
+    background-color: #999;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media(max-width:767px){
+  #media-query-notify span {
+    background-color: #fff;
+  }
+}
+
+
+
