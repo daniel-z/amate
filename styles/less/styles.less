@@ -7,24 +7,61 @@ html, body {
   text-align: center;
 }
 
-  // test
-  body {
-    background-color: #333;
-  }
-
 body {
   background-color: #000;
 }
 
 header {
-  width: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
   padding: 0;
+  padding-top: 15px;
   margin: 0;
   color: #fff;
   text-align: center;
   margin-top: 300px;
-  margin-left: 25%;
   float: left;
+
+  h1 {
+    font-size: 10em;
+    font-family: 'Euphoria Script', cursive;
+  }
+
+  h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 4em;
+  }
+
+  nav {
+    display: block;
+    margin: 15px 0;
+    padding: 0;
+
+    .button {
+      margin: 0 .4em;
+      display: inline-block;
+      font-size: 4em;
+
+      a {
+        text-decoration: none;
+        font-family: 'Euphoria Script', cursive;
+        padding: 0 30px;
+        color: #FFEB79;
+        background-color: transparent;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
+        border-radius: 2px;
+
+        &:hover {
+          background-color: #FFEB79;
+          color: #9A5E36;
+        }
+      }
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,48 +71,6 @@ h1, h2, h3, h4, h5, h6 {
 h1, h2 {
   margin: 0;
 }
-
-header h1 {
-  font-family: 'Euphoria Script', cursive;
-  font-size: 7em;
-}
-
-header h2 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 3em;
-}
-
-nav {
-  display: block;
-  padding: 20px;
-  margin-top: 40px;
-}
-
-nav .button {
-  display: inline-block;
-  font-size: 2em;
-  margin: 0 0 15px 0;
-}
-
-nav .button a {
-  text-decoration: none;
-  font-family: 'Euphoria Script', cursive;
-  padding: 5px 20px;
-  color: #fff;
-  background-color: transparent;
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  transition:.5s;
-  border-radius: 2px;
-}
-
-nav .button a:hover, nav .button a:active {
-  background-color: #fff;
-  color: #000;
-}
-
 
 
 // MEDIA QUERIES
@@ -97,9 +92,11 @@ nav .button a:hover, nav .button a:active {
   }
   header {
     margin-top: 150px;
+
+    h1 {
+      font-size: 8.5em;
+    }
   }
   nav {
-    margin-top: 15px;
-    font-size: 2em;
   }
 }
