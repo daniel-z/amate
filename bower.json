@@ -8,7 +8,10 @@
   "dependencies": {
     "bootstrap": "*",
     "jquery": "*",
-    "vegas": "*"
+    "vegas": "*",
+    "angular": "*",
+    "angular-route": "*",
+    "angular-animate": "*"
   },
   "devDependencies": {
   }

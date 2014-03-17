@@ -1,19 +1,43 @@
-$(function() {
-  $.vegas('slideshow', {
-    delay:8000,
-    backgrounds:[
-      { src:'/images/home-slider/04.jpg', fade:2000 },
-      { src:'/images/home-slider/11.jpg', fade:2000 },
-      { src:'/images/home-slider/05.jpg', fade:2000 },
-      { src:'/images/home-slider/01.jpg', fade:2000 },
-      { src:'/images/home-slider/02.jpg', fade:2000 },
-      { src:'/images/home-slider/03.jpg', fade:2000 },
-      { src:'/images/home-slider/06.jpg', fade:2000 },
-      { src:'/images/home-slider/07.jpg', fade:2000 },
-      { src:'/images/home-slider/08.jpg', fade:2000 },
-      { src:'/images/home-slider/09.jpg', fade:2000 },
-      { src:'/images/home-slider/10.jpg', fade:2000 }
-    ]
-  })('overlay');
-});
+var amateApp = angular.module('amateApp', ['ngRoute']);
 
+amateApp.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+    when('/home', {
+      templateUrl: 'partials/home.html',
+      controller: 'homeController'
+    }).
+    when('/contact', {
+      templateUrl: 'partials/contact.html',
+      controller: 'contactController'
+    }).
+    when('/gallery', {
+      templateUrl: 'partials/gallery.html',
+      controller: 'galleryController'
+    }).
+    otherwise({
+      redirectTo: '/home'
+    });
+}]);
+
+
+amateApp.controller('homeController', ['$scope', '$http',
+  function ($scope, $http) {
+    var backgroundConfig = $http.get('data/home-slider-data.json');
+    backgroundConfig.success(function(data) {
+      $scope.backgrounds = data;
+      $.vegas('slideshow', {
+        delay:8000,
+        backgrounds: $scope.backgrounds
+      })('overlay');
+    });
+  }]);
+
+amateApp.controller('contactController', ['$scope', '$http',
+  function ($scope, $http) {
+    if( $.vegas ) { $.vegas('destroy'); }
+  }]);
+
+amateApp.controller('galleryController', ['$scope', '$http',
+  function ($scope, $http) {
+    if( $.vegas ) { $.vegas('destroy'); }
+  }]);
