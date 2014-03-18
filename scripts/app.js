@@ -1,4 +1,6 @@
-var amateApp = angular.module('amateApp', ['ngRoute']);
+/* global angular, $ */
+
+var amateApp = angular.module('amateApp', ['ngRoute', 'ngAnimate']);
 
 amateApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.

@@ -11,6 +11,23 @@ body {
   background-color: #000;
 }
 
+.content {
+  &.ng-enter {
+    -webkit-animation: boundeInRight 2s;
+    -moz-animation: boundeInRight 2s;
+    -ms-animation: boundeInRight 2s;
+    animation: boundeInRight 2s;
+  }
+
+  &.ng-leave {
+    -webkit-animation: bounceOutLeft 2s;
+    -moz-animation: bounceOutLeft 2s;
+    -ms-animation: bounceOutLeft 2s;
+    animation: bounceOutLeft 2s;
+  }
+}
+
+
 header {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;

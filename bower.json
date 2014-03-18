@@ -11,7 +11,8 @@
     "vegas": "*",
     "angular": "*",
     "angular-route": "*",
-    "angular-animate": "*"
+    "angular-animate": "*",
+    "animate.css": "*"
   },
   "devDependencies": {
   }
