@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="resources/animate.css/animate.min.css">
   <link rel="stylesheet" href="styles/css/styles.css">
   <link href='http://fonts.googleapis.com/css?family=Euphoria+Script|Amatic+SC' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="resources/mediaquery-tool/tool.css">
 </head>
 <body>
-
-  <div class="slide-animate" ng-include="'resources/mediaquery-tool/mediaquerytool-partial.html'"></div>
-
+<!--   <div class="slide-animate" ng-include="'resources/mediaquery-tool/mediaquerytool-partial.html'"></div> -->
+  <div ng-include="'partials/header.html'"></div>
   <div ng-view class="content"></div>
+  <div ng-include="'partials/footer.html'"></div>
 
-  <footer></footer>
   <script src="resources/angular/angular.min.js"></script>
   <script src="resources/jquery/dist/jquery.min.js"></script>
   <script src="resources/vegas/dist/jquery.vegas.min.js"></script>

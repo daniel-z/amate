@@ -25,21 +25,46 @@ amateApp.config(['$routeProvider', function($routeProvider) {
 amateApp.controller('homeController', ['$scope', '$http',
   function ($scope, $http) {
     var backgroundConfig = $http.get('data/home-slider-data.json');
+    $scope.page = "home";
+
+    // ToDo: ckean this up: we need a header that works fine in all pages
+    $('header.main').addClass('hidden');
+
     backgroundConfig.success(function(data) {
       $scope.backgrounds = data;
-      $.vegas('slideshow', {
-        delay:8000,
+      $.vegas('destroy')
+      ('slideshow', {
+        delay:3000,
         backgrounds: $scope.backgrounds
       })('overlay');
     });
   }]);
 
-amateApp.controller('contactController', ['$scope', '$http',
-  function ($scope, $http) {
-    if( $.vegas ) { $.vegas('destroy'); }
+amateApp.controller('contactController', ['$scope', '$http', '$timeout',
+  function ($scope, $http, $timeout) {
+    $('header.main').removeClass('hidden');
+
+    $.vegas('stop');
+    $.vegas('destroy');
+    $timeout(function(){
+      $.vegas({
+        "src": "/images/al-bayo.jpg"
+      })('overlay');
+    }, 1000);
+
   }]);
 
-amateApp.controller('galleryController', ['$scope', '$http',
-  function ($scope, $http) {
-    if( $.vegas ) { $.vegas('destroy'); }
+amateApp.controller('galleryController', ['$scope', '$http', '$timeout',
+  function ($scope, $http, $timeout) {
+    $('header.main').removeClass('hidden');
+
+    $.vegas('stop');
+    $.vegas('destroy');
+    $timeout(function(){
+      $.vegas({
+        "src": "/images/al-bayo.jpg"
+      })('overlay');
+    }, 1000);
+
   }]);
+
