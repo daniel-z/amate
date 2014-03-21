@@ -28,7 +28,7 @@ amateApp.controller('homeController', ['$scope', '$http',
     $scope.page = "home";
 
     // ToDo: ckean this up: we need a header that works fine in all pages
-    $('header.main').addClass('hidden');
+    $('header.main, footer').addClass('hidden');
 
     backgroundConfig.success(function(data) {
       $scope.backgrounds = data;
@@ -40,28 +40,28 @@ amateApp.controller('homeController', ['$scope', '$http',
     });
   }]);
 
-amateApp.controller('contactController', ['$scope', '$http',
-  function ($scope, $http) {
-    var loadAnimation = function(){
-      $('header.main').removeClass('hidden');
-      $.vegas('stop')
-        ('destroy')
-        ({ "src": "/images/al-bayo.jpg" })
-        ('overlay');
-    };
 
-    loadAnimation();
-
-  }]);
-
-amateApp.controller('galleryController', ['$scope', '$http', '$timeout',
-  function ($scope, $http, $timeout) {
-    $('header.main').removeClass('hidden');
-
+amateApp.factory('commonLayout', function() {
+  var loadCommonElements = function(){
+    $('header.main, footer').removeClass('hidden');
     $.vegas('stop')
       ('destroy')
       ({ "src": "/images/al-bayo.jpg" })
       ('overlay');
+  };
 
+  return {
+    loadCommonElements: loadCommonElements
+  };
+});
+
+amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
+  function ($scope, $http, commonLayout) {
+    commonLayout.loadCommonElements();
+  }]);
+
+amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
+  function ($scope, $http, commonLayout) {
+    commonLayout.loadCommonElements();
   }]);
 

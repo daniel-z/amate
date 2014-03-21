@@ -11,7 +11,15 @@ body {
   background-color: #000;
 }
 
+a {
+  color: #E2D6A9;
+}
+
+@baseColorTransparency: rgba(0,0,0,.7);
+
 .content {
+  padding-bottom: 260px;
+
   &.ng-enter {
     -webkit-animation: fadeInRight 2s;
     -moz-animation: fadeInRight 2s;
@@ -29,24 +37,15 @@ body {
   .main-content {
     width: 80%;
     border: 1px solid #666;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     text-align: center;
     background-color: #eee;
-
-    .form-control, .input-group {
-      margin: 0 auto 10px auto;
-      width: 60%;
-    }
-    .input-group .form-control{
-      margin: 0 auto;
-      width: 100%;
-    }
   }
 }
 
 header {
-  background-color: rgba(0,0,0,.5);
+  background-color: @baseColorTransparency;
   border-bottom: 1px solid #555;
   text-align: center;
 
@@ -106,6 +105,42 @@ nav {
     &:hover {
       box-shadow: 0 0 2px #fff;
       text-shadow: 0 0 2px #fff;
+    }
+  }
+}
+
+footer {
+  background-color: @baseColorTransparency;
+  border-bottom: 1px solid #555;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  color: #fff;
+  font-size: 1.8em;
+  font-family: 'Poiret One',cursive;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  span {
+    display: block;
+  }
+
+  dl {
+    margin: 0 auto;
+    width: 60%;
+
+    dt, dd {
+      display: inline-block;
+      width: 40%;
+    }
+
+    dt {
+      text-align: right;
+    }
+
+    dd {
+      text-align: left;
     }
   }
 }
@@ -181,6 +216,26 @@ h1, h2 {
 .gallery {
 
 }
+
+// ---------------------------------------------------------------------------
+// Contact
+// ---------------------------------------------------------------------------
+.contact {
+  .form-control, .input-group {
+    margin: 0 auto 10px auto;
+    width: 60%;
+  }
+
+  .input-group {
+    width: 30%;
+    display: inline-table;
+  }
+
+  .input-group .form-control {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
 // MEDIA QUERIES
 
 /* Large desktop */
@@ -207,4 +262,18 @@ h1, h2 {
   }
   nav {
   }
+
+  .contact {
+  .form-control, .input-group {
+    width: 90%;
+  }
+
+  .input-group {
+  }
+
+  .input-group .form-control {
+    width: 100%;
+  }
+}
+
 }
