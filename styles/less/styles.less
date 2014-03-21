@@ -26,19 +26,21 @@ body {
     animation: fadeOutLeft 2s;
   }
 
-  .gallery, .contact {
-    &.ng-enter {
-      -webkit-animation: slideInRight 2s;
-      -moz-animation: slideInRight 2s;
-      -ms-animation: slideInRight 2s;
-      animation: slideInRight 2s;
-    }
+  .main-content {
+    width: 80%;
+    border: 1px solid #666;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #eee;
 
-    &.ng-leave {
-      -webkit-animation: slideOutLeft 2s;
-      -moz-animation: slideOutLeft 2s;
-      -ms-animation: slideOutLeft 2s;
-      animation: slideOutLeft 2s;
+    .form-control, .input-group {
+      margin: 0 auto 10px auto;
+      width: 60%;
+    }
+    .input-group .form-control{
+      margin: 0 auto;
+      width: 100%;
     }
   }
 }

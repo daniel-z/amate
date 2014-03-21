@@ -40,17 +40,17 @@ amateApp.controller('homeController', ['$scope', '$http',
     });
   }]);
 
-amateApp.controller('contactController', ['$scope', '$http', '$timeout',
-  function ($scope, $http, $timeout) {
-    $('header.main').removeClass('hidden');
+amateApp.controller('contactController', ['$scope', '$http',
+  function ($scope, $http) {
+    var loadAnimation = function(){
+      $('header.main').removeClass('hidden');
+      $.vegas('stop')
+        ('destroy')
+        ({ "src": "/images/al-bayo.jpg" })
+        ('overlay');
+    };
 
-    $.vegas('stop');
-    $.vegas('destroy');
-    $timeout(function(){
-      $.vegas({
-        "src": "/images/al-bayo.jpg"
-      })('overlay');
-    }, 1000);
+    loadAnimation();
 
   }]);
 
@@ -58,13 +58,10 @@ amateApp.controller('galleryController', ['$scope', '$http', '$timeout',
   function ($scope, $http, $timeout) {
     $('header.main').removeClass('hidden');
 
-    $.vegas('stop');
-    $.vegas('destroy');
-    $timeout(function(){
-      $.vegas({
-        "src": "/images/al-bayo.jpg"
-      })('overlay');
-    }, 1000);
+    $.vegas('stop')
+      ('destroy')
+      ({ "src": "/images/al-bayo.jpg" })
+      ('overlay');
 
   }]);
 
