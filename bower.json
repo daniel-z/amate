@@ -12,7 +12,8 @@
     "angular": "*",
     "angular-route": "*",
     "angular-animate": "*",
-    "animate.css": "*"
+    "animate.css": "*",
+    "mixitup": "https://github.com/patrickkunka/mixitup.git"
   },
   "devDependencies": {
   }

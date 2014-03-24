@@ -1,3 +1,30 @@
-<div class="gallery">
-  <h3>Gallery</h3>
+<div class="gallery" ng-controller="galleryController">
+  <div class="main-content">
+    <h3>Galeria</h3>
+    <div id="images-gallery">
+      <div >
+        <div class="filters global">
+          <button class="filter btn btn-large" data-filter="all">Todo</button>
+        </div>
+        <div ng-repeat="filterClass in filters" class="filters {{filterClass.class}}">
+          <button
+            ng-repeat="filter in filterClass.filters"
+            on-finish-render=""
+            class="filter btn btn-large"
+            data-filter=".{{filter.value}}">
+            {{filter.label}}
+          </button>
+        </div>
+      </div>
+
+      <img
+        ng-repeat="image in gallery"
+        class="mix {{image.categories}}"
+        data-my-order="{{$index}}"
+        ng-src="{{galleryPath}}/{{image.folder}}/{{image.name}}" />
+    </div>
+
+  </div>
 </div>
+
+<script type="text/javascript" src="resources/mixitup/src/jquery.mixitup.js"></script>

@@ -2,6 +2,20 @@
 
 var amateApp = angular.module('amateApp', ['ngRoute', 'ngAnimate']);
 
+amateApp.directive('onFinishRender',
+  function ($timeout) {
+    return {
+      restrict: 'A',
+      link: function (scope, element, attr) {
+        if (scope.$last === true) {
+          $timeout(function () {
+            scope.$emit('ngRepeatFinished');
+          });
+        }
+      }
+    };
+  });
+
 amateApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
     when('/home', {
@@ -21,7 +35,6 @@ amateApp.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-
 amateApp.controller('homeController', ['$scope', '$http',
   function ($scope, $http) {
     var backgroundConfig = $http.get('data/home-slider-data.json');
@@ -39,7 +52,6 @@ amateApp.controller('homeController', ['$scope', '$http',
       })('overlay');
     });
   }]);
-
 
 amateApp.factory('commonLayout', function() {
   var loadCommonElements = function(){
@@ -63,5 +75,25 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
 amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
   function ($scope, $http, commonLayout) {
     commonLayout.loadCommonElements();
-  }]);
+    $scope.galleryPath = 'images/gallery';
 
+    $http({method: 'GET', url: 'data/gallery.json'}).
+      success(function(data, status, headers, config) {
+        $scope.filters = data.filters;
+        $scope.gallery = data.images;
+      }).
+      error(function(data, status, headers, config) {
+        console.log('error on gallery:', status, headers, config, data);
+      });
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+      $('#images-gallery').mixItUp({
+        animation: {
+          duration: 400,
+          effects: 'translateZ(-360px) rotateZ(20deg) fade',
+          easing: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)'
+        }
+      });
+    });
+
+  }]);

@@ -215,6 +215,78 @@ h1, h2 {
 // ---------------------------------------------------------------------------
 .gallery {
 
+  h3 {
+    color: #fff;
+    font-family: 'Euphoria Script',cursive;
+    font-size: 7em;
+    margin-bottom: 30px;
+  }
+
+  .main-content {
+    background-color: rgba(1,1,1,.8);
+
+    #images-gallery {
+      img {
+        max-height: 200px;
+        margin: 15px;
+        border: 2px solid #666;
+        max-width: 100%;
+      }
+
+      .mix {
+        display: none;
+      }
+
+      div.filters {
+        margin: 10px;
+        display: inline-block;
+
+        button {
+          margin: 3px;
+
+          &.active {
+            background-color: #5B2E11;
+            color: #E2D6A9;
+          }
+        }
+
+        &.material {
+          button {
+            background-color: #E0CA9B;
+
+            &.active {
+              background-color: #5B2E11;
+              color: #E2D6A9;
+            }
+          }
+
+        }
+
+        &.accesories {
+          button {
+            background-color: #FDCEB2;
+
+            &.active {
+              background-color: #5B2E11;
+              color: #E2D6A9;
+            }
+          }
+        }
+
+        &.other {
+          button {
+            background-color: #DFB293;
+
+            &.active {
+              background-color: #5B2E11;
+              color: #E2D6A9;
+            }
+          }
+        }
+      }
+
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
