@@ -75,7 +75,6 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
 amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
   function ($scope, $http, commonLayout) {
     commonLayout.loadCommonElements();
-    $scope.galleryPath = 'images/gallery';
 
     $http({method: 'GET', url: 'data/gallery.json'}).
       success(function(data, status, headers, config) {
