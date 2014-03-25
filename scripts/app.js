@@ -37,7 +37,7 @@ amateApp.config(['$routeProvider', function($routeProvider) {
 
 amateApp.controller('homeController', ['$scope', '$http',
   function ($scope, $http) {
-    var backgroundConfig = $http.get('data/home-slider-data.json');
+    var backgroundConfig = $http.get('data/home-slider-data-online.json');
     $scope.page = "home";
 
     // ToDo: ckean this up: we need a header that works fine in all pages
@@ -58,7 +58,7 @@ amateApp.factory('commonLayout', function() {
     $('header.main, footer').removeClass('hidden');
     $.vegas('stop')
       ('destroy')
-      ({ "src": "/images/al-bayo.jpg" })
+      ({ "src": "https://dl.dropboxusercontent.com/u/36336469/amate/al-bayo.jpg" })
       ('overlay');
   };
 
@@ -75,9 +75,8 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
 amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
   function ($scope, $http, commonLayout) {
     commonLayout.loadCommonElements();
-    $scope.galleryPath = 'images/gallery';
 
-    $http({method: 'GET', url: 'data/gallery.json'}).
+    $http({method: 'GET', url: 'data/gallery-online.json'}).
       success(function(data, status, headers, config) {
         $scope.filters = data.filters;
         $scope.gallery = data.images;

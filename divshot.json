@@ -1,0 +1,27 @@
+{
+  "name": "amate-demo",
+  "root": "./",
+  "clean_urls": true,
+  "cache_control": {},
+  "routes": {},
+  "exclude": [
+    "node_modules",
+    "images/selected",
+    "images/show",
+    "images/gallery/03",
+    "images/gallery/04",
+    "images/gallery/05",
+    "images/gallery/06",
+    "images/gallery/07",
+    "images/gallery/08",
+    "images/gallery/09",
+    "images/gallery/09",
+    "images/gallery/10",
+    "images/gallery/12",
+    "images/gallery/13",
+    "images/gallery/14",
+    "images/gallery/Registro.csv",
+    "images/gallery/~$Registro.xlsx",
+    "images/gallery/Registro.xlsx"
+  ]
+}
