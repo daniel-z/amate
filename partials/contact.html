@@ -1,11 +1,13 @@
 <div class="contact">
   <div class="main-content">
     <h3>Contactanos</h3>
+    <p class="legend" >
+      Tenemos sumo cuidado de la relación con nuestros clientes, nuestro diferenciador es la calidez del servicio y la puntualidad. Contáctanos y conoce la seriedad de nuestro trabajo.</p>
     <form id="contact">
       <input type="text" class="form-control" placeholder="Nombre"/>
       <div class="input-group">
         <span class="input-group-addon">@</span>
-        <input type="email" class="form-control" placeholder="Email"/>
+        <input type="email" class="form-control" placeholder="Email" ngPattern='/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'/>
       </div>
       <div class="input-group">
         <span class="input-group-addon">

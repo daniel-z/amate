@@ -8,7 +8,7 @@
         { "label": "Tulle Natural", "value": "tulle-natural" },
         { "label": "Tulle Deslavado", "value": "tulle-deslavado" },
         { "label": "Tulle Natural Decorado", "value": "tulle-natural-decorado" },
-        { "label": "Lamina Papel", "value": "papel" }
+        { "label": "Amate Liso", "value": "papel" }
       ]
     }, {
       "class": "accesories",
@@ -22,7 +22,7 @@
       "class": "other",
       "filters": [
         { "label": "Tejidos", "value": "tejidos" },
-        { "label": "blanco-natural", "value": "blanco-natural" }
+        { "label": "Blanco Natural", "value": "blanco-natural" }
       ]
     }
   ],
