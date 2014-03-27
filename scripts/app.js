@@ -27,7 +27,7 @@ amateApp.config(['$routeProvider', function($routeProvider) {
       controller: 'contactController'
     }).
     when('/gallery', {
-      templateUrl: 'partials/gallery.html',
+      templateUrl: 'partials/galleryInProgress.html',
       controller: 'galleryController'
     }).
     otherwise({
