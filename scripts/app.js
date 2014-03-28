@@ -102,6 +102,10 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
 
     $scope.emailForm = {};
 
+    $scope.cleanForm = function() {
+      $scope.emailForm = {};
+    };
+
     $scope.generateMessage = function(emailData) {
       var htmlEmailTemplate = "<p>" +
           "Nombre: " + emailData.name + "<br/>" +
