@@ -5,6 +5,15 @@
       Tenemos sumo cuidado de la relación con nuestros clientes, nuestro diferenciador es la calidez del servicio y la puntualidad. Contáctanos y conoce la seriedad de nuestro trabajo.
     </p>
 
+    <div class="alert alert-success fade in">
+      <button  href="#" type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Enviado!,</strong> tu mensaje a sido enviado con éxito, pronto te contactaremos.
+    </div>
+    <div class="alert alert-danger fade in">
+      <button  href="#" type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Error!,</strong> hubo un error en el envío de tu mensaje, por favor intenta de nuevo.
+    </div>
+
     <form id="contactForm" novalidate name="contactForm" ng-submit="sendEmail(emailForm)">
       <input type="text" class="form-control" placeholder="Nombre"
         ng-pattern="/^[\sa-zA-Z]+$/"

@@ -97,6 +97,7 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
 // CONTACT PAGE
 amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
   function ($scope, $http, commonLayout) {
+
     commonLayout.loadCommonElements();
 
     $scope.emailForm = {};
@@ -131,9 +132,12 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
     };
 
     $scope.generateEmail = function(emailData) {
-      var message = $scope.generateMessage(emailData);
+      var testKey = 'IUNZeo_PpN26eaINR5HDrw',
+      realKey = 'qDaJ16MXpB5aV6FY6Sh6_g',
+      message = $scope.generateMessage(emailData);
+
       return {
-        "key": "qDaJ16MXpB5aV6FY6Sh6_g",
+        "key": realKey,
         "message": {
           "html": message.html || undefined,
           "text": message.text || undefined,
@@ -163,11 +167,15 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
 
       $http.post('https://mandrillapp.com/api/1.0/messages/send.json', email).
       success(function(data, status, headers, config) {
-        // publish success in form notification area
-        // publish posible email errors in form notification area
+        if(data[0].status === 'error' || data[0].status === 'rejected') {
+          $('.alert.alert-danger').show();
+        }
+        else if(data[0].status === 'sent') {
+          $('.alert.alert-success').show();
+        }
       }).
       error(function(data, status, headers, config) {
-        // publish error in form notification area
+        $('.alert.alert-danger').show();
       });
     };
 
