@@ -150,8 +150,8 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
           "from_name": $scope.emailForm.name,
           "to": [
             {
-              "email": "daniel.zamorano.m@gmail.com",
-              "name": "Daniel Zamorano",
+              "email": "gerardo@arteamate.com",
+              "name": "Gerardo Trejo",
               "type": "to"
             }
           ],

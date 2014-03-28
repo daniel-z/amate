@@ -138,8 +138,10 @@ footer {
   bottom: 0;
   width: 100%;
 
-  span {
+  span.name {
     display: block;
+    font-family: 'Montez',cursive;
+    font-size: 2em;
   }
 
   dl {
@@ -148,7 +150,7 @@ footer {
 
     dt, dd {
       display: inline-block;
-      width: 40%;
+      text-align: center;
     }
 
     dt {
@@ -156,8 +158,10 @@ footer {
     }
 
     dd {
-      text-align: left;
+      text-align: center;
+      margin-right: 15px;
     }
+
   }
 }
 
@@ -184,10 +188,25 @@ h1, h2 {
   margin-top: 300px;
   float: left;
 
-  h1 {
-    font-size: 10em;
-    display: block;
+  .logo {
+    width: 500px;
+    margin: 0 auto 40px;
+
+    h1 {
+      font-size: 10em;
+      display: block;
+    }
+
+    h2.by {
+      float: right;
+      font-size: 3.4em;
+      color: #FFEB79;
+      margin-top: -11px;
+      font-family: 'Montez',cursive;
+    }
+
   }
+
 
   h2 {
     font-size: 4em;
