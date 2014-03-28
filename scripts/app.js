@@ -68,13 +68,6 @@ amateApp.factory('commonLayout', function() {
   };
 });
 
-// CONTACT PAGE
-amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
-  function ($scope, $http, commonLayout) {
-    commonLayout.loadCommonElements();
-  }]);
-
-
 // GALLERY PAGE
 amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
   function ($scope, $http, commonLayout) {
@@ -98,5 +91,84 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
         }
       });
     });
+
+  }]);
+
+// CONTACT PAGE
+amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
+  function ($scope, $http, commonLayout) {
+    commonLayout.loadCommonElements();
+
+    $scope.emailForm = {};
+
+    $scope.generateMessage = function(emailData) {
+      var htmlEmailTemplate = "<p>" +
+          "Nombre: " + emailData.name + "<br/>" +
+          "Email: " + emailData.email + "<br/>" +
+          "Teléfono: " + emailData.phone + "<br/>" +
+          "Mensaje: <br/>" +
+          emailData.message +
+        "</p>" +
+        "<p>" +
+          "Arte Amate - Formulario de Contacto" +
+        "</p>",
+
+        textEmailTemplate = "\n" +
+          "Nombre: " + emailData.name + "\n" +
+          "Email: " + emailData.email + "\n" +
+          "Teléfono: " + emailData.phone + "\n" +
+          "Mensaje: \n" +
+          emailData.message +
+        "\n" +
+        "\n" +
+        "Arte Amate - Formulario de Contacto" +
+        "\n";
+
+      return {
+        "html": htmlEmailTemplate,
+        "text": textEmailTemplate
+      };
+    };
+
+    $scope.generateEmail = function(emailData) {
+      var message = $scope.generateMessage(emailData);
+      return {
+        "key": "qDaJ16MXpB5aV6FY6Sh6_g",
+        "message": {
+          "html": message.html || undefined,
+          "text": message.text || undefined,
+          "subject": "Formulario Contacto Arte Amate Site",
+          "from_email": $scope.emailForm.email,
+          "from_name": $scope.emailForm.name,
+          "to": [
+            {
+              "email": "daniel.zamorano.m@gmail.com",
+              "name": "Daniel Zamorano",
+              "type": "to"
+            }
+          ],
+          "headers": {
+            "Reply-To": $scope.emailForm.email
+          }
+        }
+      };
+    };
+
+    $scope.sendEmail = function(emailData) {
+      if(emailData.$invalid) {
+        return;
+      }
+
+      var email = $scope.generateEmail(emailData);
+
+      $http.post('https://mandrillapp.com/api/1.0/messages/send.json', email).
+      success(function(data, status, headers, config) {
+        // publish success in form notification area
+        // publish posible email errors in form notification area
+      }).
+      error(function(data, status, headers, config) {
+        // publish error in form notification area
+      });
+    };
 
   }]);

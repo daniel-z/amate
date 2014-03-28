@@ -311,8 +311,14 @@ h1, h2 {
 // Contact
 // ---------------------------------------------------------------------------
 .contact {
-  .main-content {
 
+  form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+    color: #fff;
+  }
+
+  form input.ng-valid.ng-dirty {
+    background-color: #78FA89;
   }
 
   .form-control, .input-group {
