@@ -38,8 +38,8 @@ a {
   h3 {
     color: #fff;
     font-family: 'Euphoria Script',cursive;
-    font-size: 7em;
-    margin: 20px 0;
+    font-size: 6em;
+    margin: 5px 0;
   }
 
   p.legend {
@@ -251,42 +251,27 @@ h1, h2 {
 .gallery {
   .main-content {
 
-    #images-gallery {
-
-      div.work_in_progress {
-        color: #fff;
-        font-size: 2.4em;
-        margin: 20px auto 30px;
-        color: #fff;
-        width: 80%;
-        font-family: 'Poiret One',cursive;
-        border: 1px solid #fff;
-        padding: 10px;
-      }
-
-      div.mix {
-        display: none;
-        max-width: 31%;
-        max-height: 200px;
-        margin: 5px;
-        border: 2px solid #666;
-
-        div.image {
-          background-size: 100%;
-          background-repeat: no-repeat;
-
-          img {
-            max-width: 100%;
-          }
-        }
-      }
+    .gallery-filters {
+      position: fixed;
+      border: 1px solid #b9b9b9;
+      left: 0;
+      text-align: left;
+      width: 150px;
+      background-color: @baseColorTransparency;
 
       div.filters {
-        margin: 10px;
+        width: 100%;
+        margin: 5px 0 0 10px;
         display: inline-block;
 
         button {
-          margin: 3px;
+          margin: 3px 0;
+          clear: both;
+          float: left;
+          text-transform: uppercase;
+          font-size: 1.2em;
+          padding: 2px 4px;
+          border-radius: 2px;
 
           &.active {
             background-color: #5B2E11;
@@ -325,6 +310,36 @@ h1, h2 {
               background-color: #5B2E11;
               color: #E2D6A9;
             }
+          }
+        }
+      }
+    }
+
+    #images-gallery {
+      div.work_in_progress {
+        color: #fff;
+        font-size: 2.4em;
+        margin: 20px auto 30px;
+        color: #fff;
+        width: 80%;
+        font-family: 'Poiret One',cursive;
+        border: 1px solid #fff;
+        padding: 10px;
+      }
+
+      div.mix {
+        display: none;
+        max-width: 31%;
+        max-height: 200px;
+        margin: 5px;
+        border: 2px solid #666;
+
+        div.image {
+          background-size: 100%;
+          background-repeat: no-repeat;
+
+          img {
+            max-width: 100%;
           }
         }
       }
@@ -381,7 +396,19 @@ h1, h2 {
 
 /* Portrait tablet to landscape and desktop */
 @media(min-width:768px)and(max-width:979px){
-
+  // -------------------------------------------------------------------------
+  // Gallery
+  // -------------------------------------------------------------------------
+  .gallery {
+    .main-content {
+      #images-gallery {
+        padding: 0 20px;
+        div.mix {
+          max-width: 40%;
+        }
+      }
+    }
+  }
 }
 
 /* Landscape phone to portrait tablet */
@@ -398,7 +425,23 @@ h1, h2 {
     }
   }
 
-  nav {
+  // -------------------------------------------------------------------------
+  // Gallery
+  // -------------------------------------------------------------------------
+  .gallery {
+    .main-content {
+      .gallery-filters {
+        width: 105px;
+        .filterClass {
+          width: 90%;
+        }
+      }
+      #images-gallery {
+        div.mix {
+          max-width: 100%;
+        }
+      }
+    }
   }
 
   .contact {
@@ -412,6 +455,7 @@ h1, h2 {
   .input-group .form-control {
     width: 100%;
   }
-}
+
+}// max-width:767px
 
 }
