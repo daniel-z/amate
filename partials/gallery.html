@@ -21,11 +21,14 @@
         </div>
       </div>
 
-      <img
+      <div
         ng-repeat="image in gallery"
         class="mix {{image.categories}}"
-        data-my-order="{{$index}}"
-        ng-src="{{image.folder}}/{{image.name}}" />
+        data-my-order="{{$index}}" >
+        <div class="image" style="background-image:url('{{image.folder}}/{{image.name}}');">
+          <img ng-src="images/watermark-400x200.png" />
+        </div>
+      </div>
     </div>
 
   </div>

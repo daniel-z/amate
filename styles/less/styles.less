@@ -264,15 +264,21 @@ h1, h2 {
         padding: 10px;
       }
 
-      img {
-        max-height: 200px;
-        margin: 15px;
-        border: 2px solid #666;
-        max-width: 31%;
-      }
-
-      .mix {
+      div.mix {
         display: none;
+        max-width: 31%;
+        max-height: 200px;
+        margin: 5px;
+        border: 2px solid #666;
+
+        div.image {
+          background-size: 100%;
+          background-repeat: no-repeat;
+
+          img {
+            max-width: 100%;
+          }
+        }
       }
 
       div.filters {

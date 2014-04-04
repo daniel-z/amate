@@ -30,6 +30,10 @@ amateApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'partials/galleryInProgress.html',
       controller: 'galleryController'
     }).
+    when('/gallery-final', {
+      templateUrl: 'partials/gallery.html',
+      controller: 'galleryController'
+    }).
     otherwise({
       redirectTo: '/home'
     });
