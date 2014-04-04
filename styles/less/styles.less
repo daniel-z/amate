@@ -19,7 +19,7 @@ a {
 @baseColorTransparency: rgba(0,0,0,.7);
 
 .content {
-  padding-bottom: 260px;
+  padding-bottom: 120px;
 
   &.ng-enter {
     -webkit-animation: fadeIn 4s;
@@ -129,19 +129,27 @@ footer {
   background-color: @baseColorTransparency;
   border-bottom: 1px solid #555;
   text-align: center;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 10px;
   color: #fff;
   font-size: 1.8em;
   font-family: 'Poiret One',cursive;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  position: fixed;
+  bottom: -107px;
+  -webkit-transition: 1s;
+  transition: 1s;
+
+  &:hover {
+    bottom: 0;
+  }
+
+  // bottom: -133px;
 
   span.name {
     display: block;
     font-family: 'Montez',cursive;
     font-size: 2em;
+    margin-bottom: 15px;
   }
 
   dl {
