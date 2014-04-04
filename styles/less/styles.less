@@ -345,6 +345,11 @@ h1, h2 {
         div.image {
           background-size: 100%;
           background-repeat: no-repeat;
+          transition: 200ms;
+
+          &:hover {
+            background-position: 0 -25px;
+          }
 
           img {
             max-width: 100%;
