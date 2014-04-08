@@ -25,13 +25,15 @@
         ng-repeat="image in gallery"
         class="mix {{image.categories}}"
         data-my-order="{{$index}}" >
-        <div class="image" style="background-image:url('{{image.folder}}/{{image.name}}');">
-          <img ng-src="images/watermark-400x200.png" />
-        </div>
-      </div>
-    </div>
 
-  </div>
+         <div class="image" style="background-image:url('{{image.folder}}/{{image.name}}');">
+            <a href="{{image.folder}}/{{image.name}}" rel="prettyPhoto[g1]">
+              <img ng-src="images/watermark-400x200.png" width="100%" height="100%"/>
+            </a>
+        </div>
+       </div>
+    </div>
+  </div> <!-- images-gallery -->
 </div>
 
 <script type="text/javascript" src="resources/mixitup/src/jquery.mixitup.js"></script>

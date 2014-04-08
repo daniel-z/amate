@@ -94,6 +94,22 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
           easing: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)'
         }
       });
+
+      $("a[rel^='prettyPhoto']").prettyPhoto({
+        animation_speed: 'fast',
+        show_title: false,
+        allow_resize: true,
+        image_markup: '<div style="background-image: url(\'{path}\'); background-size: 100%;">'+
+          '<img id="fullResImage" src="images/watermark-800x400.png"/>'+
+          '</div>'
+      });
+
+      $scope.$on('$locationChangeStart', function(event, newUrl, oldUrl) {
+        if(newUrl.match(newUrl.match(/#prettyPhoto/))) {
+          event.preventDefault();
+        }
+      });
+
     });
 
   }]);
