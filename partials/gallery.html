@@ -1,13 +1,17 @@
 <div class="gallery" ng-controller="galleryController">
   <div class="main-content">
-    <h3>Galería</h3>
-    <p class="legend" >
+    <h3 class="lang-esp">Galería</h3>
+    <h3 class="lang-eng">Galery</h3>
+    <p class="legend lang-esp" >
       Conoce y enamorate del verdadero arte prehispanico, elaborado siguiendo el mismo proceso artesanal desde hace siglos.
     </p>
-
+    <p class="legend lang-eng" >
+      Meet and fall in love of real prehispanic art, prepared using the same traditional process for centuries.
+    </p>
     <div class="gallery-filters">
       <div class="filters global">
-        <button class="filter btn btn-large" data-filter="all">Todo</button>
+        <button class="filter btn btn-large lang-esp" data-filter="all">Todo</button>
+        <button class="filter btn btn-large lang-eng" data-filter="all">All</button>
       </div>
       <div ng-repeat="filterClass in filters" class="filters {{filterClass.class}}">
         <button

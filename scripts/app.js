@@ -39,25 +39,6 @@ amateApp.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-// HOME PAGE
-amateApp.controller('homeController', ['$scope', '$http',
-  function ($scope, $http) {
-    var backgroundConfig = $http.get('data/home-slider-data.json');
-    $scope.page = "home";
-
-    // ToDo: ckean this up: we need a header that works fine in all pages
-    $('header.main, footer').addClass('hidden');
-
-    backgroundConfig.success(function(data) {
-      $scope.backgrounds = data;
-      $.vegas('destroy')
-      ('slideshow', {
-        delay:3000,
-        backgrounds: $scope.backgrounds
-      })('overlay');
-    });
-  }]);
-
 amateApp.factory('commonLayout', function() {
   var loadCommonElements = function(){
     $('header.main, footer').removeClass('hidden');
@@ -72,10 +53,106 @@ amateApp.factory('commonLayout', function() {
   };
 });
 
+amateApp.factory('langControl', function() {
+    var defaultLang = 'esp',
+    availableLanguages = ['esp', 'eng'],
+    langToggle = {
+      'esp': 'eng',
+      'eng': 'esp'
+    },
+    langControl = this,
+    actualLang = '',
+
+    init = function () {
+      actualLang = actualLang || defaultLang;
+    },
+
+    initButtons = function() {
+      $('.btn-lang').each(function(){
+        $(this).on('click', function(){
+          action(this);
+        });
+      });
+    },
+
+    action = function(element){
+      var language = $(element).data('lang');
+      updateActualLang(language);
+      return;
+    },
+
+    updateActualLang = function(newLang){
+      actualLang = newLang;
+      _updateInterface(newLang);
+    },
+
+    refresh = function () {
+      initButtons();
+      _updateInterface(getActualLang());
+    },
+
+    _updateInterface = function(newLang){
+      if(!newLang) {return;}
+      _updateBody(newLang);
+      _updateControls(newLang);
+      return;
+    },
+
+    _updateBody = function(newLang) {
+      var oldLang = langToggle[newLang];
+      if ($('body').data('lang') === newLang) { return; }
+      $('body').removeClass('lang-'+oldLang)
+        .addClass('lang-'+newLang)
+        .data('lang', newLang);
+    },
+
+    _updateControls = function(newLang) {
+      var oldLang = langToggle[newLang];
+      $('[data-lang='+oldLang+']').removeClass('active');
+      $('[data-lang='+newLang+']').removeClass('active');
+    },
+
+    getActualLang = function() {
+      return actualLang;
+    };
+
+    init();
+
+    return {
+      'refresh': refresh,
+      'switch': updateActualLang,
+      'getActualLang': getActualLang,
+      'defaultLang': defaultLang,
+    };
+  });
+
+// HOME PAGE
+amateApp.controller('homeController', ['$scope', '$http', 'langControl',
+  function ($scope, $http, $langControl) {
+    var backgroundConfig = $http.get('data/home-slider-data.json');
+    $scope.page = "home";
+
+    $langControl.refresh();
+
+    // ToDo: ckean this up: we need a header that works fine in all pages
+    $('header.main, footer').addClass('hidden');
+
+    backgroundConfig.success(function(data) {
+      $scope.backgrounds = data;
+      $.vegas('destroy')
+      ('slideshow', {
+        delay:3000,
+        backgrounds: $scope.backgrounds
+      })('overlay');
+    });
+  }]);
+
 // GALLERY PAGE
-amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
-  function ($scope, $http, commonLayout) {
+amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'langControl',
+  function ($scope, $http, commonLayout, $langControl) {
     commonLayout.loadCommonElements();
+
+    $langControl.refresh();
 
     $http({method: 'GET', url: 'data/gallery.json'}).
       success(function(data, status, headers, config) {
@@ -83,7 +160,7 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
         $scope.gallery = data.images;
       }).
       error(function(data, status, headers, config) {
-        console.log('error on gallery:', status, headers, config, data);
+        console.error('error on gallery:', status, headers, config, data);
       });
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
@@ -115,10 +192,12 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout',
   }]);
 
 // CONTACT PAGE
-amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
-  function ($scope, $http, commonLayout) {
-
+amateApp.controller('contactController', ['$scope', '$http', 'commonLayout', 'langControl',
+  function ($scope, $http, commonLayout, $langControl) {
+    $scope.lang = $langControl.getActualLang();
     commonLayout.loadCommonElements();
+
+    $langControl.refresh();
 
     $scope.emailForm = {};
 
@@ -161,7 +240,7 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
       message = $scope.generateMessage(emailData);
 
       return {
-        "key": realKey,
+        "key": testKey,
         "message": {
           "html": message.html || undefined,
           "text": message.text || undefined,
@@ -204,3 +283,4 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout',
     };
 
   }]);
+
