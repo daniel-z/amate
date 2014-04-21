@@ -193,8 +193,6 @@ footer {
     bottom: 0;
   }
 
-  // bottom: -133px;
-
   span.name {
     display: block;
     font-family: 'Montez',cursive;
@@ -239,7 +237,8 @@ h1, h2 {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   padding: 0;
-  padding-top: 15px;
+  padding-top: 30px;
+  position: relative;
   margin: 0;
   color: #fff;
   text-align: center;
@@ -249,6 +248,7 @@ h1, h2 {
   .logo {
     width: 500px;
     margin: 0 auto 40px;
+    position: relative;
 
     h1 {
       font-size: 10em;
@@ -266,7 +266,8 @@ h1, h2 {
   }
 
   .language-selection {
-    position: static;
+    top: 20px;
+    position: absolute;
     float: right;
     margin-right: 20px;
   }
@@ -468,9 +469,19 @@ div.pp_default .pp_social {
 
 /* Portrait tablet to landscape and desktop */
 @media(min-width:768px)and(max-width:979px){
-  // -------------------------------------------------------------------------
+  // ---------------------------------------
+  // Home
+  // ---------------------------------------
+  .home header {
+    h2.by {
+      width: auto;
+      right: 25%;
+    }
+  }
+
+  // ---------------------------------------
   // Gallery
-  // -------------------------------------------------------------------------
+  // ---------------------------------------
   .gallery {
     .main-content {
       #images-gallery {
@@ -489,17 +500,36 @@ div.pp_default .pp_social {
     font-size: 7px;
   }
 
+  // ---------------------------------------
+  // Home
+  // ---------------------------------------
   .home header {
     margin-top: 150px;
+    font-size: 1em;
+    .logo {
+      width: 400px;
+    }
 
-    h1 {
-      font-size: 8.5em;
+    h2.by {
+      margin-right: 85px;
+      width: auto;
+      right: -7%;
+    }
+
+    .language-selection {
+      top: 10px;
+      margin: 0;
+
+      button {
+        font-size: 1.6em;
+        padding: 5px;
+      }
     }
   }
 
-  // -------------------------------------------------------------------------
+  // ---------------------------------------
   // Gallery
-  // -------------------------------------------------------------------------
+  // ---------------------------------------
   .gallery {
     .main-content {
       .gallery-filters {
