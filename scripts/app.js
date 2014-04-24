@@ -1,4 +1,4 @@
-/* global angular, $ */
+/* global angular, $, alert */
 
 var amateApp = angular.module('amateApp', ['ngRoute', 'ngAnimate']);
 
@@ -47,6 +47,17 @@ amateApp.factory('commonLayout', function() {
       ({ "src": "images/al-bayo.jpg" })
       ('overlay');
   };
+
+  $('footer').on('click mouseenter', function(){
+    if($(this).hasClass('up')){
+      $(this).removeClass('up');
+      $(this).addClass('down');
+      return;
+    }
+
+    $(this).addClass('up');
+    $(this).removeClass('down');
+  });
 
   return {
     loadCommonElements: loadCommonElements
@@ -177,7 +188,7 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'la
         show_title: false,
         allow_resize: true,
         image_markup: '<div style="background-image: url(\'{path}\'); background-size: 100%;">'+
-          '<img id="fullResImage" src="images/watermark-800x400.png"/>'+
+          '<img class="watermark" id="fullResImage" src="images/watermark-800x400.png"/>'+
           '</div>'
       });
 
@@ -196,6 +207,16 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout', 'la
   function ($scope, $http, commonLayout, $langControl) {
     $scope.lang = $langControl.getActualLang();
     commonLayout.loadCommonElements();
+
+
+    // fixing ipad keyboard pushing footer up in chrome
+    $('footer').addClass('hide');
+    $('input, textarea').on('focus', function() {
+      $('footer').addClass('hide');
+    });
+    $('input, textarea').on('blur', function() {
+      $('footer').removeClass('hide');
+    });
 
     $langControl.refresh();
 

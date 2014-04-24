@@ -185,19 +185,31 @@ footer {
   font-family: 'Poiret One',cursive;
   width: 100%;
   position: fixed;
-  bottom: -107px;
   -webkit-transition: 1s;
   transition: 1s;
+  cursor: pointer;
 
-  &:hover {
+  &.down {
+    bottom: -107px;
+  }
+
+  &.up {
     bottom: 0;
   }
 
-  span.name {
-    display: block;
-    font-family: 'Montez',cursive;
-    font-size: 2em;
+  .handler {
     margin-bottom: 15px;
+
+    span.name {
+      display: block;
+      font-family: 'Montez',cursive;
+      font-size: 2em;
+      margin-bottom: 0;
+    }
+
+    span.glyphicon {
+      top: -7px;
+    }
   }
 
   dl {
@@ -312,6 +324,11 @@ h1, h2 {
 // ---------------------------------------------------------------------------
 // Gallery
 // ---------------------------------------------------------------------------
+.pp_content_container {
+  img.watermark {
+    opacity: 0.5;
+  }
+}
 .gallery {
   .main-content {
 
@@ -410,6 +427,10 @@ h1, h2 {
           img {
             max-width: 100%;
           }
+
+          img.watermark {
+            opacity: .5;
+          }
         }
       }
 
@@ -469,7 +490,6 @@ div.pp_default .pp_social {
 
 /* Portrait tablet to landscape and desktop */
 @media(min-width:768px)and(max-width:979px){
-
   footer {
     bottom: -117px;
   }
@@ -506,18 +526,29 @@ div.pp_default .pp_social {
     font-size: 7px;
   }
 
+  .content .main-content {
+    width: 100%;
+    margin: 0;
+
+    p.legend {
+      display: none;
+    }
+  }
+
   nav {
     padding: 5px;
     margin: 0;
   }
 
   header {
-    margin-bottom: 35px;
+    margin-bottom: 0;
     .logo {
       padding: 5px;
     }
     .language-selection {
-      top: 95px;
+      top: 60px;
+      right: 2px;
+
       button {
         border-color: #999;
         font-size: 1.8em;
@@ -562,11 +593,26 @@ div.pp_default .pp_social {
   .gallery {
     .main-content {
       .gallery-filters {
-        width: 105px;
+        font-size: 1.3em;
+        position: static;
+        width: auto;
+
+        div.filters {
+          display: inline-block;
+          clear: none;
+          width: auto;
+          margin: 2px 5px;
+
+          button {
+            clear: none;
+            margin: 2px;
+          }
+        }
         .filterClass {
           width: 90%;
         }
       }
+
       #images-gallery {
         div.mix {
           max-width: 100%;
