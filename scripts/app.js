@@ -30,6 +30,10 @@ amateApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'partials/galleryInProgress.html',
       controller: 'galleryController'
     }).
+    when('/about', {
+      templateUrl: 'partials/about.html',
+      controller: 'aboutController'
+    }).
     when('/gallery-final', {
       templateUrl: 'partials/gallery.html',
       controller: 'galleryController'
@@ -200,6 +204,14 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'la
 
     });
 
+  }]);
+
+// ABOUT US
+amateApp.controller('aboutController', ['$scope', '$http', 'commonLayout', 'langControl',
+  function ($scope, $http, commonLayout, $langControl) {
+    $scope.lang = $langControl.getActualLang();
+    commonLayout.loadCommonElements();
+    $langControl.refresh();
   }]);
 
 // CONTACT PAGE
