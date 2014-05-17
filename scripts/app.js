@@ -273,7 +273,7 @@ amateApp.controller('contactController', ['$scope', '$http', 'commonLayout', 'la
       message = $scope.generateMessage(emailData);
 
       return {
-        "key": testKey,
+        "key": realKey,
         "message": {
           "html": message.html || undefined,
           "text": message.text || undefined,
