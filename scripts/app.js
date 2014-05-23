@@ -27,16 +27,12 @@ amateApp.config(['$routeProvider', function($routeProvider) {
       controller: 'contactController'
     }).
     when('/gallery', {
-      templateUrl: 'partials/galleryInProgress.html',
+      templateUrl: 'partials/gallery.html',
       controller: 'galleryController'
     }).
     when('/about', {
       templateUrl: 'partials/about.html',
       controller: 'aboutController'
-    }).
-    when('/gallery-final', {
-      templateUrl: 'partials/gallery.html',
-      controller: 'galleryController'
     }).
     otherwise({
       redirectTo: '/home'
