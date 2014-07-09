@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="amateApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7">
+  <title>Arte Amate</title>
+  <link rel="stylesheet" href="resources/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="resources/vegas/dist/jquery.vegas.min.css">
+  <link rel="stylesheet" href="resources/prettyPhoto/css/prettyPhoto.css">
+  <link rel="stylesheet" href="styles/css/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Euphoria+Script|Amatic+SC|Montez|Poiret+One' rel='stylesheet' type='text/css'>
+
+  <script src="resources/jquery/dist/jquery.min.js"></script>
+  <script src="resources/angular/angular.min.js"></script>
+</head>
+<body data-lang="esp" class="lang-esp" ng-controller="galleryController">
+
+  <div ng-include="'partials/header.html'"></div>
+  <div ng-view class="content">
+    <div class="gallery" ng-controller="galleryController">
+      <div class="main-content">
+        <h3>
+          <span class="lang-esp">Galería</span>
+          <span class="lang-eng">Gallery</span>
+        </h3>
+        <div class="gallery-filters">
+          <div class="filters global">
+            <button class="filter btn btn-large lang-esp" data-filter="all">Todo</button>
+            <button class="filter btn btn-large lang-eng" data-filter="all">All</button>
+          </div>
+          <div ng-repeat="filterClass in filters" class="filters {{filterClass.class}}">
+            <button
+              ng-repeat="filter in filterClass.filters"
+              on-finish-render=""
+              class="filter btn btn-large"
+              data-filter=".{{filter.value}}">
+              {{filter.label}}
+            </button>
+          </div>
+        </div>
+        <p class="legend lang-esp" >
+          Conoce y enamorate del verdadero arte prehispanico, elaborado siguiendo el mismo proceso artesanal desde hace siglos.
+        </p>
+        <p class="legend lang-eng" >
+          Meet and fall in love of real prehispanic art, prepared using the same traditional process for centuries.
+        </p>
+
+        <div id="images-gallery">
+          <div
+            ng-repeat="image in gallery"
+            class="mix {{image.categories}}"
+            data-my-order="{{$index}}" >
+
+             <div class="image" style="background-image:url('{{image.folder}}/{{image.name}}');">
+                <a href="{{image.folder}}/{{image.name}}" rel="prettyPhoto[g1]">
+                  <img class="watermark" ng-src="images/watermark-400x200.png" width="100%" height="100%"/>
+                </a>
+            </div>
+           </div>
+        </div>
+      </div> <!-- images-gallery -->
+    </div>
+  </div>
+  <div ng-include="'partials/footer.html'"></div>
+
+  <script src="resources/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+  <script src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="resources/vegas/dist/jquery.vegas.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <script type="text/javascript" src="resources/mixitup/src/jquery.mixitup.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 /* global angular, $, alert */
 
-var amateApp = angular.module('amateApp', ['ngRoute', 'ngAnimate']);
+var amateApp = angular.module('amateApp', []);
 
 amateApp.directive('onFinishRender',
   function ($timeout) {
@@ -15,54 +15,6 @@ amateApp.directive('onFinishRender',
       }
     };
   });
-
-amateApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-    when('/home', {
-      templateUrl: 'partials/home.html',
-      controller: 'homeController'
-    }).
-    when('/contact', {
-      templateUrl: 'partials/contact.html',
-      controller: 'contactController'
-    }).
-    when('/gallery', {
-      templateUrl: 'partials/gallery.html',
-      controller: 'galleryController'
-    }).
-    when('/about', {
-      templateUrl: 'partials/about.html',
-      controller: 'aboutController'
-    }).
-    otherwise({
-      redirectTo: '/home'
-    });
-}]);
-
-amateApp.factory('commonLayout', function() {
-  var loadCommonElements = function(){
-    $('header.main, footer').removeClass('hidden');
-    $.vegas('stop')
-      ('destroy')
-      ({ "src": "images/al-bayo.jpg" })
-      ('overlay');
-  };
-
-  $('footer').on('click mouseenter', function(){
-    if($(this).hasClass('up')){
-      $(this).removeClass('up');
-      $(this).addClass('down');
-      return;
-    }
-
-    $(this).addClass('up');
-    $(this).removeClass('down');
-  });
-
-  return {
-    loadCommonElements: loadCommonElements
-  };
-});
 
 amateApp.factory('langControl', function() {
     var defaultLang = 'esp',
@@ -159,9 +111,8 @@ amateApp.controller('homeController', ['$scope', '$http', 'langControl',
   }]);
 
 // GALLERY PAGE
-amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'langControl',
-  function ($scope, $http, commonLayout, $langControl) {
-    commonLayout.loadCommonElements();
+amateApp.controller('galleryController', ['$scope', '$http', 'langControl',
+  function ($scope, $http, $langControl) {
 
     $langControl.refresh();
 
@@ -203,19 +154,16 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'la
   }]);
 
 // ABOUT US
-amateApp.controller('aboutController', ['$scope', '$http', 'commonLayout', 'langControl',
-  function ($scope, $http, commonLayout, $langControl) {
+amateApp.controller('aboutController', ['$scope', '$http', 'langControl',
+  function ($scope, $http, $langControl) {
     $scope.lang = $langControl.getActualLang();
-    commonLayout.loadCommonElements();
     $langControl.refresh();
   }]);
 
 // CONTACT PAGE
-amateApp.controller('contactController', ['$scope', '$http', 'commonLayout', 'langControl',
-  function ($scope, $http, commonLayout, $langControl) {
+amateApp.controller('contactController', ['$scope', '$http', 'langControl',
+  function ($scope, $http, $langControl) {
     $scope.lang = $langControl.getActualLang();
-    commonLayout.loadCommonElements();
-
 
     // fixing ipad keyboard pushing footer up in chrome
     $('footer').addClass('hide');
