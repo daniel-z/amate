@@ -1,0 +1,98 @@
+<!doctype html>
+<html ng-app="amateApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7">
+  <title>Conoce nuestra historia</title>
+  <link rel="stylesheet" href="resources/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="resources/vegas/dist/jquery.vegas.min.css">
+  <link rel="stylesheet" href="resources/animate.css/animate.min.css">
+  <link rel="stylesheet" href="resources/prettyPhoto/css/prettyPhoto.css">
+  <link rel="stylesheet" href="styles/css/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Euphoria+Script|Amatic+SC|Montez|Poiret+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="resources/mediaquery-tool/tool.css">
+
+  <script script="scripts/ga.js" ></script>
+  <script src="resources/jquery/jquery.min.js"></script>
+  <script src="resources/angular/angular.min.js"></script>
+</head>
+<body data-lang="esp" class="lang-esp">
+
+  <div ng-include="'partials/header.html'"></div>
+  <div ng-view class="content">
+    <div class="about" ng-controller='aboutController'>
+      <div class="main-content">
+        <h3 class="lang-esp">Sobre Nosotros</h3>
+        <h3 class="lang-eng">About us</h3>
+
+        <section>
+          <h2 class="lang-esp">Nuestra Empresa</h2>
+          <p class="lang-esp">Nuestra empresa nació en la comunidad indígena de San Pablito, Puebla, México. Contamos con 20 años de experiencia en el manejo y trato de cortezas de árbol para la elaboración del papel amate y 15 años de experiencia en fibras de planta tulle. Nos distinguimos por la puntualidad, formalidad y nuestros diseños únicos.
+          </p>
+
+          <h2 class="lang-eng"></h2>
+          <p class="lang-eng">
+          </p>
+        </section>
+
+        <section>
+          <h2 class="lang-esp"></h2>
+          <p class="lang-esp">
+          </p>
+
+          <h2 class="lang-eng"></h2>
+          <p class="lang-eng">
+          </p>
+        </section>
+
+        <section>
+          <h2 class="lang-esp">Historia Papel Amate</h2>
+          <p class="lang-esp">
+            Nuestro arte es de origen prehispánico, mas de 500 años de historia coronan está tradición. Cuidamos y seguimos el mismo proceso utilizado por los indígenas mesoamericanos. Cuando usted compra con nosotros usted está comprando arte e historia.
+          </p>
+
+          <h2 class="lang-eng">Amate Paper History</h2>
+          <p class="lang-eng">
+            Our art is of pre-hispanic origin, more than 500 hundred years of history crown this tradition. We take care and follow the same process used by Mesoamerican Indians. When you buy with us, you are buying art and history.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="lang-esp">Nuestros Productos</h2>
+          <p class="lang-esp">
+            Nuestros productos incluyen: Cuadros enmarcados, sin marco, con luces, herrería, lamparas, biombos, figuras, hoja de amate: liso, perforado y deshebrado.
+          </p>
+          <h2 class="lang-eng">Our Products</h2>
+          <p class="lang-eng">
+            Our products include: Framed and unframed art, with lights, blacksmithing, lamps, screens, figures, amate sheet: plain, perforated and shredded.
+          </p>
+        </section>
+        <section>
+          <h2 class="lang-esp">Nuestra Sala de Exhibición</h2>
+          <p class="lang-esp">
+            Nuestra sala de exhibición se encuentra en:<br/>
+            Avenida Tonaltecas #235
+            Col. Centro, Tonala, Jalisco, México
+            Tel. 3310 506581
+          </p>
+          <h2 class="lang-eng">Our Showroom</h2>
+          <p class="lang-eng">
+            Our show room is in:<br/>
+            Avenida Tonaltecas #235
+            Col. Centro, Tonala, Jalisco, México
+            Tel. 3310 506581
+
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <div ng-include="'partials/footer.html'"></div>
+
+  <script src="resources/backstretch/jquery.backstretch.min.js"></script>
+  <script src="resources/angular-animate/angular-animate.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/nosotros.js"></script>
+</body>
+</html>
