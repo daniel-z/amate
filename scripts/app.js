@@ -1,4 +1,4 @@
-/* global angular, $, alert */
+/* global angular, $, console*/
 
 var amateApp = angular.module('amateApp', []);
 
@@ -89,6 +89,11 @@ amateApp.factory('langControl', function() {
     };
   });
 
+amateApp.controller('headerController', ['langControl',
+  function ($langControl) {
+    $langControl.refresh();
+  }]);
+
 // HOME PAGE
 amateApp.controller('homeController', ['$scope', '$http', 'langControl',
   function ($scope, $http, $langControl) {
@@ -113,8 +118,9 @@ amateApp.controller('homeController', ['$scope', '$http', 'langControl',
 // GALLERY PAGE
 amateApp.controller('galleryController', ['$scope', '$http', 'langControl',
   function ($scope, $http, $langControl) {
+    $scope.page = "gallery";
 
-    $langControl.refresh();
+    $.backstretch("images/gallery/03/30-b.jpg");
 
     $http({method: 'GET', url: 'data/gallery.json'}).
       success(function(data, status, headers, config) {
@@ -148,10 +154,8 @@ amateApp.controller('galleryController', ['$scope', '$http', 'langControl',
           event.preventDefault();
         }
       });
-
-    });
-
-  }]);
+    }); //ngRepeatFinished
+  }]); // Gallery Page
 
 // ABOUT US
 amateApp.controller('aboutController', ['$scope', '$http', 'langControl',

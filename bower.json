@@ -13,7 +13,8 @@
     "angular-route": "*",
     "angular-animate": "*",
     "animate.css": "*",
-    "mixitup": "https://github.com/patrickkunka/mixitup.git"
+    "mixitup": "https://github.com/patrickkunka/mixitup.git",
+    "backstretch": "https://github.com/srobbin/jquery-backstretch.git"
   },
   "devDependencies": {
   }
