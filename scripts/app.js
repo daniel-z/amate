@@ -1,6 +1,6 @@
-/* global angular, $, alert */
+/* global angular, $, console*/
 
-var amateApp = angular.module('amateApp', ['ngRoute', 'ngAnimate']);
+var amateApp = angular.module('amateApp', []);
 
 amateApp.directive('onFinishRender',
   function ($timeout) {
@@ -15,54 +15,6 @@ amateApp.directive('onFinishRender',
       }
     };
   });
-
-amateApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-    when('/home', {
-      templateUrl: 'partials/home.html',
-      controller: 'homeController'
-    }).
-    when('/contact', {
-      templateUrl: 'partials/contact.html',
-      controller: 'contactController'
-    }).
-    when('/gallery', {
-      templateUrl: 'partials/gallery.html',
-      controller: 'galleryController'
-    }).
-    when('/about', {
-      templateUrl: 'partials/about.html',
-      controller: 'aboutController'
-    }).
-    otherwise({
-      redirectTo: '/home'
-    });
-}]);
-
-amateApp.factory('commonLayout', function() {
-  var loadCommonElements = function(){
-    $('header.main, footer').removeClass('hidden');
-    $.vegas('stop')
-      ('destroy')
-      ({ "src": "images/al-bayo.jpg" })
-      ('overlay');
-  };
-
-  $('footer').on('click mouseenter', function(){
-    if($(this).hasClass('up')){
-      $(this).removeClass('up');
-      $(this).addClass('down');
-      return;
-    }
-
-    $(this).addClass('up');
-    $(this).removeClass('down');
-  });
-
-  return {
-    loadCommonElements: loadCommonElements
-  };
-});
 
 amateApp.factory('langControl', function() {
     var defaultLang = 'esp',
@@ -137,6 +89,11 @@ amateApp.factory('langControl', function() {
     };
   });
 
+amateApp.controller('headerController', ['langControl',
+  function ($langControl) {
+    $langControl.refresh();
+  }]);
+
 // HOME PAGE
 amateApp.controller('homeController', ['$scope', '$http', 'langControl',
   function ($scope, $http, $langControl) {
@@ -159,11 +116,11 @@ amateApp.controller('homeController', ['$scope', '$http', 'langControl',
   }]);
 
 // GALLERY PAGE
-amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'langControl',
-  function ($scope, $http, commonLayout, $langControl) {
-    commonLayout.loadCommonElements();
+amateApp.controller('galleryController', ['$scope', '$http', 'langControl',
+  function ($scope, $http, $langControl) {
+    $scope.page = "gallery";
 
-    $langControl.refresh();
+    $.backstretch("images/gallery/03/30-b.jpg");
 
     $http({method: 'GET', url: 'data/gallery.json'}).
       success(function(data, status, headers, config) {
@@ -197,119 +154,13 @@ amateApp.controller('galleryController', ['$scope', '$http', 'commonLayout', 'la
           event.preventDefault();
         }
       });
-
-    });
-
-  }]);
+    }); //ngRepeatFinished
+  }]); // Gallery Page
 
 // ABOUT US
-amateApp.controller('aboutController', ['$scope', '$http', 'commonLayout', 'langControl',
-  function ($scope, $http, commonLayout, $langControl) {
+amateApp.controller('aboutController', ['$scope', '$http', 'langControl',
+  function ($scope, $http, $langControl) {
     $scope.lang = $langControl.getActualLang();
-    commonLayout.loadCommonElements();
     $langControl.refresh();
-  }]);
-
-// CONTACT PAGE
-amateApp.controller('contactController', ['$scope', '$http', 'commonLayout', 'langControl',
-  function ($scope, $http, commonLayout, $langControl) {
-    $scope.lang = $langControl.getActualLang();
-    commonLayout.loadCommonElements();
-
-
-    // fixing ipad keyboard pushing footer up in chrome
-    $('footer').addClass('hide');
-    $('input, textarea').on('focus', function() {
-      $('footer').addClass('hide');
-    });
-    $('input, textarea').on('blur', function() {
-      $('footer').removeClass('hide');
-    });
-
-    $langControl.refresh();
-
-    $scope.emailForm = {};
-
-    $scope.cleanForm = function() {
-      $scope.emailForm = {};
-    };
-
-    $scope.generateMessage = function(emailData) {
-      var htmlEmailTemplate = "<p>" +
-          "Nombre: " + emailData.name + "<br/>" +
-          "Email: " + emailData.email + "<br/>" +
-          "Teléfono: " + emailData.phone + "<br/>" +
-          "Mensaje: <br/>" +
-          emailData.message +
-        "</p>" +
-        "<p>" +
-          "Arte Amate - Formulario de Contacto" +
-        "</p>",
-
-        textEmailTemplate = "\n" +
-          "Nombre: " + emailData.name + "\n" +
-          "Email: " + emailData.email + "\n" +
-          "Teléfono: " + emailData.phone + "\n" +
-          "Mensaje: \n" +
-          emailData.message +
-        "\n" +
-        "\n" +
-        "Arte Amate - Formulario de Contacto" +
-        "\n";
-
-      return {
-        "html": htmlEmailTemplate,
-        "text": textEmailTemplate
-      };
-    };
-
-    $scope.generateEmail = function(emailData) {
-      var testKey = 'IUNZeo_PpN26eaINR5HDrw',
-      realKey = 'qDaJ16MXpB5aV6FY6Sh6_g',
-      message = $scope.generateMessage(emailData);
-
-      return {
-        "key": realKey,
-        "message": {
-          "html": message.html || undefined,
-          "text": message.text || undefined,
-          "subject": "Formulario Contacto Arte Amate Site",
-          "from_email": $scope.emailForm.email,
-          "from_name": $scope.emailForm.name,
-          "to": [
-            {
-              "email": "gerardo@arteamate.com",
-              "name": "Gerardo Trejo",
-              "type": "to"
-            }
-          ],
-          "headers": {
-            "Reply-To": $scope.emailForm.email
-          }
-        }
-      };
-    };
-
-    $scope.sendEmail = function(emailData) {
-      if(emailData.$invalid) {
-        return;
-      }
-
-      var email = $scope.generateEmail(emailData);
-
-      $http.post('https://mandrillapp.com/api/1.0/messages/send.json', email).
-      success(function(data, status, headers, config) {
-        if(data[0].status === 'error' || data[0].status === 'rejected') {
-          $('.alert.alert-danger').show();
-        }
-        else if(data[0].status === 'sent') {
-          $('.alert.alert-success').show();
-        }
-      }).
-      error(function(data, status, headers, config) {
-        $('.alert.alert-danger').show();
-      });
-    };
-
   }]);
 

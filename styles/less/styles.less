@@ -188,10 +188,7 @@ footer {
   -webkit-transition: 1s;
   transition: 1s;
   cursor: pointer;
-
-  &.down {
-    bottom: -107px;
-  }
+  bottom: -107px;
 
   &.up {
     bottom: 0;
@@ -448,11 +445,15 @@ div.pp_default .pp_social {
 // About
 // ---------------------------------------------------------------------------
 .about {
-    h2 {
-      font-family: 'Amatic SC',cursive;
-      font-size: 4em;
-      color: #e2d6a9;
-    }
+  h2 {
+    font-family: 'Amatic SC',cursive;
+    font-size: 4em;
+    color: #e2d6a9;
+  }
+  section p {
+    font-size: 1.8em;
+    color: #fff;
+  }
 }
 // ---------------------------------------------------------------------------
 // Contact
@@ -497,7 +498,6 @@ div.pp_default .pp_social {
 
 /* Large desktop */
 @media(min-width:1200px){
-
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -634,17 +634,29 @@ div.pp_default .pp_social {
   }
 
   .contact {
-  .form-control, .input-group {
-    width: 90%;
+    .form-control, .input-group {
+      width: 90%;
+    }
+
+    .input-group {
+    }
+
+    .input-group .form-control {
+      width: 100%;
+    }
   }
 
-  .input-group {
+  // ---------------------------------------
+  // About
+  // ---------------------------------------
+  .about {
+     section {
+      h2 {
+        margin-top: 20px;
+      }
+      p {
+        font-size: 2.4em;
+      }
+    }
   }
-
-  .input-group .form-control {
-    width: 100%;
-  }
-
 }// max-width:767px
-
-}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html ng-app="amateApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7">
+  <title>Contactanos!</title>
+  <meta name="description" content="Dejanos tus datos y te contactaremos.
+  Te ayudaremos a encontrar el articulo y diseño que necesitas.">
+
+  <link rel="stylesheet" href="resources/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/css/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Euphoria+Script|Amatic+SC|Montez|Poiret+One' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" href="resources/mediaquery-tool/tool.css">
+
+  <script script="scripts/ga.js" ></script>
+  <script src="resources/jquery/jquery.min.js"></script>
+  <script src="resources/angular/angular.min.js"></script>
+</head>
+<body data-lang="esp" class="lang-esp">
+
+<!--   <div class="slide-animate" ng-include="'resources/mediaquery-tool/mediaquerytool-partial.html'"></div> -->
+
+  <div ng-include="'partials/header.html'"></div>
+  <div class="content">
+    <div class="contact" ng-controller="contactController">
+      <div class="main-content">
+        <h3 class="lang-esp">Contáctanos!</h3>
+        <h3 class="lang-eng">Contact us!</h3>
+        <p class="legend lang-esp" >
+          Tenemos sumo cuidado de la relación con nuestros clientes, nuestro diferenciador es la calidez del servicio y la puntualidad. Contáctanos y conoce la seriedad de nuestro trabajo.
+        </p>
+        <p class="legend lang-eng" >
+          We take care of our customers, our differentiator is the warmth of the service and punctuality. Contact us and know the seriousness of our work.
+        </p>
+
+        <div class="alert alert-success fade in">
+          <button  href="#" type="button" class="close" data-dismiss="alert">&times;</button>
+          <div class="lang-esp">
+            <strong>Enviado!,</strong> tu mensaje a sido enviado con éxito, pronto te contactaremos.
+          </div>
+          <div class="lang-eng">
+            <strong>Sent!,</strong> your message was sent, we will contact you soon.
+          </div>
+        </div>
+        <div class="alert alert-danger fade in">
+          <button  href="#" type="button" class="close" data-dismiss="alert">&times;</button>
+          <div class="lang-esp">
+            <strong>Error!,</strong> hubo un error en el envío de tu mensaje, por favor intenta de nuevo.
+          </div>
+          <div class="lang-eng">
+            <strong>Error!,</strong> there was an error sending the messafe, please try again.
+          </div>
+        </div>
+
+        <form id="contactFormEsp" novalidate name="contactForm"
+          ng-submit="sendEmail(emailForm)" class="lang-esp">
+          <input name="name" type="text" class="form-control" placeholder="Nombre"
+            ng-pattern="/^[\sa-zA-Z]+$/"
+            ng-model="emailForm.name" required/>
+
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="email" class="form-control" placeholder="Email"
+            ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/"
+            ng-model="emailForm.email" required/>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-earphone"></span>
+            </span>
+            <input type="phone" class="form-control" placeholder="Teléfono"
+            ng-pattern="/^(?=(.*\d){8,})[\d\(\)\s+-]{8,}$/"
+            ng-model="emailForm.phone" />
+          </div>
+
+          <textarea class="form-control" placeholder="Comentarios" ng-model="emailForm.message" required></textarea>
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="cleanForm()">
+            <span class="lang-esp">Limpiar</span>
+          </button>
+          <button class="btn btn-default btn-lg" type="submit"
+          ng-disabled="contactForm.$invalid">
+            <span class="lang-esp">Enviar</span>
+          </button>
+        </form>
+
+        <form id="contactFormEng" novalidate name="contactForm" ng-submit="sendEmail(emailForm)"
+          class="lang-eng">
+          <input name="name" type="text" class="form-control" placeholder="Name"
+            ng-pattern="/^[\sa-zA-Z]+$/"
+            ng-model="emailForm.name" required/>
+
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="email" class="form-control" placeholder="Email"
+            ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/"
+            ng-model="emailForm.email" required/>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-earphone"></span>
+            </span>
+            <input type="phone" class="form-control" placeholder="Phone"
+            ng-pattern="/^(?=(.*\d){8,})[\d\(\)\s+-]{8,}$/"
+            ng-model="emailForm.phone" />
+          </div>
+
+          <textarea class="form-control" placeholder="Comments" ng-model="emailForm.message" required></textarea>
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="cleanForm()">
+            <span>Clean</span>
+          </button>
+          <button class="btn btn-default btn-lg" type="submit"
+          ng-disabled="contactForm.$invalid">
+            <span class="lang-eng">Submit</span>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <div ng-include="'partials/footer.html'"></div>
+
+  <script src="resources/backstretch/jquery.backstretch.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/contacto.js"></script>
+</body>
+</html>
